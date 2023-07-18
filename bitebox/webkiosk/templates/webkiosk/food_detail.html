@@ -1,0 +1,12 @@
+{% extends 'webkiosk/base_template.html' %}
+
+
+{% block pagetitle %} {{food.name}} {% endblock %} <!--food.name is title-->
+
+{% block maincontent %}
+<h2> {{food.name}} </h2> <!--context object in views.py is food ie. context = {'food': f}, sowe also used food.name to match-->
+<u1>
+<li> Description: {{ food.description }} </li>  
+<li> Price: Php {{ food.price}} </li>  
+</u1>
+{% endblock %}

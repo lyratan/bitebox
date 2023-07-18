@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>bITEbox Web Kiosk - {% block pagetitle%} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'webkiosk/styles/main.css' %}">
+  </head>
+  <body>
+    <header>
+      <img src="{% static 'webkiosk/images/bitebox.png' %}" width="100" height="auto">
+      <h1>bITEbox</h1>
+      <p>bitebitebitebitebite</p>
+    </header>
+
+    {% block mainnav %}
+    <nav>
+      <ul>
+        <li><a href="{% url 'webkiosk:food-list' %}">Menu</a></li>
+        <li><a href="{% url 'webkiosk:food-create' %}">Add Food</a></li>
+        <li><a href="{% url 'webkiosk:customer-list' %}">Customers</a></li>
+        <li><a href="{% url 'webkiosk:customer-create' %}">Add Customers</a></li>
+        <li><a href="{% url 'webkiosk:order-list' %}">Order</a></li>
+        <li><a href="{% url 'webkiosk:order-create' %}">Add Orders</a></li>
+      </ul>
+    </nav>
+    {% endblock %}
+
+    <hr>
+
+    <main>
+        {% block maincontent %}
+
+        {% endblock %}
+    </main>
+
+    <hr class="bottom-line">
+
+    {% if user.is_authenticated %}
+    <form action="{% url 'webkiosk:logout' %}" method="post" class="logout-form">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% endif %}
+
+    <div class="solid-square"></div> <!-- Add the solid square here -->
+  </body>
+</html>

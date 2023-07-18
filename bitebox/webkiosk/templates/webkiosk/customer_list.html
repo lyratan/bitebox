@@ -1,0 +1,15 @@
+{% extends 'webkiosk/base_template.html'%}
+
+{% block pagetitle %} Customer {% endblock%}
+
+{% block maincontent %}
+<h2> Customers </h2>
+<ol> 
+    <!-- list of customer records go here, ths is comment on html--> 
+    {% for customer in customerlist %} <!-- for loop loops through all items on customer list -->
+        <li>{{ customer.firstname}} {{ customer.lastname}} | {{ customer.city}} | <a href="{% url 'webkiosk:customer-detail' customer.id %}"> More Info </a> | <a href="{% url 'webkiosk:customer-update' customer.id %}"> Edit</a> | <a href="{% url 'webkiosk:customer-delete' customer.id %}"> Delete </a> </li>
+    {% endfor %}
+</ol>
+<br>
+<p> Welcome to the BITEbox Web Kiosk! Manage the menu, customers, and orders here</p>
+{% endblock %}

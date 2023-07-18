@@ -1,0 +1,15 @@
+{% extends 'webkiosk/base_template.html'%}
+
+{% block pagetitle %} Orders {% endblock%}
+
+{% block maincontent %}
+<h2>Orders </h2>
+<ol> 
+    <!-- list of order records go here, ths is comment on html--> 
+    {% for order in orderlist %} <!-- for loop loops through all items on food list -->
+        <li>{{order.orderdatetime}},{{order.food}},{{order.customer}} | <a href="{% url 'webkiosk:order-detail' order.id %}"> More Info | <a href="{% url 'webkiosk:food-update' order.id %}"> Edit</a> | <a href="{% url 'webkiosk:food-delete' order.id %}">Delete</a> </a> | </li>
+    {% endfor %}
+</ol>
+<br>
+<p> Welcome to the BITEbox Web Kiosk! Manage the menu, customers, and orders here</p>
+{% endblock %}
